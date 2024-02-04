@@ -1,0 +1,6 @@
+<div class="category-filter-container"> 
+    <button class="filter-item" (click)="selectButton(item)"
+        *ngFor="let item of data$ | async" [ngClass]="{'selected': selectedButton().name === item.name}">{{item.name}}
+    <span class="slot-count" [ngClass]="{'selected-count': selectedButton === item.name}">{{item.totalGames}}</span>
+</button>
+</div>

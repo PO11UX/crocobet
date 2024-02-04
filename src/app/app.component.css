@@ -1,9 +1,8 @@
-
-  .main-container{
-    display: flex;
-    width: 100%;
-  }
-.layout-container{
-    width: 100%;
-    padding-left: 80px
+.main-container {
+  display: flex;
+  width: 100%;
+}
+.layout-container {
+  width: 100%;
+  padding-left: 80px;
 }

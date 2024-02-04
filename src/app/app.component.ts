@@ -10,7 +10,7 @@ import { HeaderComponent } from './pages/header/header.component';
   styleUrls: ['./app.component.css'],
   standalone: true,
   imports: [CommonModule, RouterModule, SidebarComponent, HeaderComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   title = 'crocobet';

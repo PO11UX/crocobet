@@ -1,6 +1,28 @@
-<div class="category-filter-container"> 
-    <button class="filter-item" (click)="selectButton(item)"
-        *ngFor="let item of data$ | async" [ngClass]="{'selected': selectedButton().name === item.name}">{{item.name}}
-    <span class="slot-count" [ngClass]="{'selected-count': selectedButton === item.name}">{{item.totalGames}}</span>
-</button>
+<div class="category-filter-container">
+  <button class="see-more" (click)="toggleButton()">
+    {{ collapseText }}
+    <span
+      ><img
+        [@rotateArrow]="seeMore ? 'up' : 'down'"
+        src="assets/media/icons/arrow.png"
+    /></span>
+  </button>
+  <div
+    class="filter-list"
+    [@expandCollapse]="seeMore ? 'expanded' : 'collapsed'"
+  >
+    <button
+      class="filter-item"
+      (click)="selectButton(item)"
+      *ngFor="let item of data$ | async"
+      [ngClass]="{ selected: selectedButton().name === item.name }"
+    >
+      {{ item.name }}
+      <span
+        class="slot-count"
+        [ngClass]="{ 'selected-count': selectedButton === item.name }"
+        >{{ item.totalGames }}</span
+      >
+    </button>
+  </div>
 </div>

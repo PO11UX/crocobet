@@ -7,10 +7,14 @@ import { SlotsListComponent } from './slot-list/slot-list.component';
 @Component({
   selector: 'app-slots-page',
   standalone: true,
-  imports: [CommonModule, CategoryFiltersComponent, ProviderFiltersComponent, SlotsListComponent ],
+  imports: [
+    CommonModule,
+    CategoryFiltersComponent,
+    ProviderFiltersComponent,
+    SlotsListComponent,
+  ],
   templateUrl: './slots-page.component.html',
   styleUrls: ['./slots-page.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SlotsPageComponent {
-}
+export class SlotsPageComponent {}

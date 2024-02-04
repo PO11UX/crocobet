@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit, effect, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable, map } from 'rxjs';
-import { SlotsFacade } from 'src/app/services/slots.facade';
+import { SlotsFacade } from 'src/app/pages/slots-page/services/slots.facade';
 
 @Component({
   selector: 'app-slots-list',

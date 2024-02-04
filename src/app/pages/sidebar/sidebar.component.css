@@ -27,12 +27,15 @@ aside {
 .nav-item{
     position: relative;
     cursor: pointer;
+    width: 80px;
+    display: flex;
+    justify-content: center;
 }
 .active::after{
     content: "";
     position: absolute;
     top: 50%;
-    left: -39%;
+    left: 0;
     width: 3px;
     height: 77px;
     transform: translateY(-50%);
@@ -40,4 +43,7 @@ aside {
     border-bottom-right-radius: 4px;
     background-color: #189541;
 
+}
+.active img{
+    filter: brightness(0) invert(1);
 }

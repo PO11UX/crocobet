@@ -68,8 +68,8 @@ export class ProviderFiltersComponent implements OnInit {
     this.data$ = this.slotsFacade.getProviders();
     this.selectedButton = this.slotsFacade.getData();
   }
-  selectButton(button: string): void {
-    this.slotsFacade.setSlotProviderId(button);
+  selectButton(provider: string): void {
+    this.slotsFacade.setSlotProviderId(provider);
   }
   toggleButton(): void {
     this.seeMore = !this.seeMore;

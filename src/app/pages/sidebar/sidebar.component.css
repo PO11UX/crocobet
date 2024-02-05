@@ -3,20 +3,23 @@ aside {
     width: 80px;
     height: 100vh;
     background-color: #2a3139;
-  }
-.nav{
+}
+
+.nav {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     height: 100%;
     max-height: 930px;
 }
-.nav-logo{
+
+.nav-logo {
     width: 60px;
     margin: 10px auto 20px;
     cursor: pointer;
 }
-.nav-list{
+
+.nav-list {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -24,14 +27,16 @@ aside {
     max-height: 360px;
     height: 100%;
 }
-.nav-item{
+
+.nav-item {
     position: relative;
     cursor: pointer;
     width: 80px;
     display: flex;
     justify-content: center;
 }
-.active::after{
+
+.active::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -44,6 +49,7 @@ aside {
     background-color: #189541;
 
 }
-.active img{
+
+.active img {
     filter: brightness(0) invert(1);
 }

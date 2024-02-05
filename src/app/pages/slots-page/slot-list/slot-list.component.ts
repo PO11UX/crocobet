@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SlotsFacade } from 'src/app/pages/slots-page/services/slots.facade';
 
@@ -8,9 +13,9 @@ import { SlotsFacade } from 'src/app/pages/slots-page/services/slots.facade';
   imports: [CommonModule],
   templateUrl: './slot-list.component.html',
   styleUrls: ['./slot-list.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SlotsListComponent implements OnInit  {
+export class SlotsListComponent implements OnInit {
   data: any;
   slotsFacade = inject(SlotsFacade);
 

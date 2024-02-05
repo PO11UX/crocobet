@@ -1,41 +1,33 @@
-
 export interface Game {
-    favoriteCount: number;
-    game_id: string;
-    name: string;
-    provider: string;
-    providerName: string;
-    image: string;
-    imageSet: {
-      blurhash: string;
-      original: string;
-      webp: string;
-    };
-    url: string;
-    order: number;
-    tags: string[];
-    stats: any[];
-    gameId: string;
-    image2: string;
-  }
-export interface Slot {
-  type: string;
-  provider: string;
-  vendor: string;
-  iframeW: number;
-  iframeH: number;
+  favoriteCount: number;
+  game_id: string;
   name: string;
+  provider: string;
+  providerName: string;
+  image: string;
+  imageSet: {
+    blurhash: string;
+    original: string;
+    webp: string;
+  };
+  url: string;
   order: number;
   tags: string[];
-  games: Game[];
-  totalGames: number;
+  stats: any[];
+  gameId: string;
+  image2: string;
 }
-export interface SlotList {
-    data: Slot[]
-}
-export interface SlotState{
-  games: Game[];
+export interface Slot {
+  type?: string | undefined;
+  provider?: string | undefined;
+  vendor?: string | undefined;
+  iframeW?: number | undefined;
+  iframeH?: number | undefined;
   name: string;
+  order?: number | undefined;
+  tags?: string[] | undefined;
+  games: Game[];
+  totalGames?: number;
 }
 export interface Provider {
   enabled: boolean;
@@ -51,10 +43,6 @@ export interface Provider {
   vendor: string;
   _id: string;
 }
-export interface ProviderList {
-    data: Provider[]
-}
-
 export interface Category {
   category: string;
   games: Game[];
@@ -63,8 +51,4 @@ export interface Category {
   platform: string;
   totalGames: number;
   type: string;
-}
-
-export interface CategoryList {
-    data: Category[]
 }

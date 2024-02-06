@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PageNotFoundComponent } from 'src/app/shared/page-not-found/page-not-found.component';
+
+import { PageNotFoundComponent } from 'src/app/pages/page-not-found/page-not-found.component';
 
 @Component({
   selector: 'app-live-page',
   standalone: true,
-  imports: [CommonModule, PageNotFoundComponent],
+  imports: [PageNotFoundComponent],
   templateUrl: './live-page.component.html',
-  styleUrls: ['./live-page.component.css']
+  styleUrls: ['./live-page.component.scss']
 })
 export class LivePageComponent {
 

@@ -41,6 +41,9 @@
 .selected {
     opacity: 1;
     color: #fff;
+    .slot-count{
+        color:#189541;
+    }
 }
 
 .slot-count {
@@ -54,13 +57,10 @@
     font-weight: 500;
     letter-spacing: 0.66px;
     text-align: left;
+   
 }
 
 .filter-item:hover .slot-count {
-    color: #189541;
-}
-
-.selected-count {
     color: #189541;
 }
 

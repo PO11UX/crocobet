@@ -1,25 +1,19 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
-  inject,
+  inject
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SlotsFacade } from 'src/app/pages/slots-page/services/slots.facade';
+import { SlotsStore } from '../store';
+
 
 @Component({
   selector: 'app-slots-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './slot-list.component.html',
-  styleUrls: ['./slot-list.component.css'],
+  styleUrls: ['./slot-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SlotsListComponent implements OnInit {
-  data: any;
-  slotsFacade = inject(SlotsFacade);
-
-  ngOnInit(): void {
-    this.data = this.slotsFacade.getData();
-  }
+export class SlotsListComponent  {
+  readonly store = inject(SlotsStore)
 }

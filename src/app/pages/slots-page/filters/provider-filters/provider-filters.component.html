@@ -1,23 +1,25 @@
 <div class="provider-filter-container">
   <button class="see-more" (click)="toggleButton()">
-    {{ collapseText }}
+    {{ seeMore() ? 'See less' : 'See more' }}
     <span
       ><img
-        [@rotateArrow]="seeMore ? 'up' : 'down'"
-        src="assets/media/icons/arrow.png"
+      [@rotateArrow]="seeMore() ? 'up' : 'down'"
+      src="assets/media/icons/arrow.png"
     /></span>
   </button>
   <div
     class="filter-list"
-    [@expandCollapse]="seeMore ? 'expanded' : 'collapsed'"
-  >
-    <button
-      class="filter-item"
-      (click)="selectButton(item.provider)"
-      *ngFor="let item of data$ | async"
-      [ngClass]="{ selected: item.name === selectedButton().name }"
+    [@expandCollapse]="seeMore() ? 'expanded' : 'collapsed'"
     >
-      {{ item.name }}
-    </button>
+    @for (item of store.providers(); track item) {
+      <button
+        class="filter-item"
+        (click)="selectButton(item.provider)"
+        
+        [ngClass]="{'selected': item.provider === store.activeProvider() && store.activeFilter() === 'provider'}"
+        >
+        {{ item.name }}
+      </button>
+    }
   </div>
 </div>

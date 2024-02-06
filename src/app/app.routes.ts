@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { SlotsFacade } from './pages/slots-page/services/slots.facade';
+import { SlotsService } from './pages/slots-page/services/slots.service';
+import { SlotsStore } from './pages/slots-page/store/slots.store';
 
 export const routes: Routes = [
   {
@@ -7,13 +10,7 @@ export const routes: Routes = [
       import('./pages/slots-page/slots-page.component').then(
         (m) => m.SlotsPageComponent
       ),
-  },
-  {
-    path: 'not-found',
-    loadComponent: () =>
-      import('./shared/page-not-found/page-not-found.component').then(
-        (m) => m.PageNotFoundComponent
-      ),
+    providers: [SlotsService, SlotsFacade, SlotsStore],
   },
   {
     path: 'sport',
@@ -37,5 +34,11 @@ export const routes: Routes = [
       ),
   },
   { path: '', redirectTo: 'slots', pathMatch: 'full' },
-  { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./pages/page-not-found/page-not-found.component').then(
+        (m) => m.PageNotFoundComponent
+      ),
+  },
 ];

@@ -1,23 +1,22 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Category, Provider, Slot } from '../interfaces/slot.interface';
+import { Injectable, inject } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class SlotsService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
-  getSlotCategories() {
-    return this.http.get<{ data: Category[] }>(
+  getSlotCategories<T>() {
+    return this.http.get<{ data: T[] }>(
       `https://cms.crocobet.com/integrations/v2/slot/categories?include=games`
     );
   }
-  getProviders() {
-    return this.http.get<{ data: Provider[] }>(
+  getProviders<T>() {
+    return this.http.get<{ data: T[] }>(
       `https://cms.crocobet.com/integrations?type=slot&platform=desktop`
     );
   }
-  getSlotsByProvider(id: string) {
-    return this.http.get<{ data: Slot }>(
+  getSlotsByProvider<T>(id: string) {
+    return this.http.get<{ data: T }>(
       `https://cms.crocobet.com/integrations/v2/slot/providers/${id}`
     );
   }

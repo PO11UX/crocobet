@@ -1,26 +1,14 @@
-import { Injectable, computed, effect, inject, signal } from '@angular/core';
-import { SlotsService } from './slots.service';
+import { Injectable, inject } from '@angular/core';
 import { map } from 'rxjs';
-import { Slot } from '../interfaces/slot.interface';
+import { Category, Provider, Slot } from '../interfaces';
+import { SlotsService } from './slots.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class SlotsFacade {
-  slotsService = inject(SlotsService);
-  activeProvider = signal('egt');
-  slotList = computed(() => this.getSlotsByProvider(this.activeProvider()));
-  slotGamesData = signal<Slot>({
-    games: [],
-    name: '',
-  });
-  slotGames = computed(() => this.slotGamesData());
-  constructor() {
-    effect(() => {
-      this.slotList().subscribe((res) => this.slotGamesData.set(res));
-    });
-  }
-  getSlotCategories() {
+  private slotsService = inject(SlotsService);
+  getSlotCategories(){
     return this.slotsService
-      .getSlotCategories()
+      .getSlotCategories<Category>()
       .pipe(
         map((response) =>
           response.data.filter(
@@ -30,26 +18,15 @@ export class SlotsFacade {
         )
       );
   }
-  getData() {
-    return this.slotGames;
-  }
-
   getProviders() {
     return this.slotsService
-      .getProviders()
+      .getProviders<Provider>()
       .pipe(map((response) => response.data));
   }
 
   getSlotsByProvider(provider: string) {
     return this.slotsService
-      .getSlotsByProvider(provider)
+      .getSlotsByProvider<Slot>(provider)
       .pipe(map((response) => response.data));
-  }
-  setData(data: Slot) {
-    this.slotGamesData.set(data);
-  }
-
-  setSlotProviderId(provider: string) {
-    this.activeProvider.set(provider);
   }
 }

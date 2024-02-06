@@ -1,27 +1,26 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  inject,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
-import { SlotsFacade } from 'src/app/pages/slots-page/services/slots.facade';
-import {
-  trigger,
+  animate,
   state,
   style,
   transition,
-  animate,
+  trigger,
 } from '@angular/animations';
+import { NgClass } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { Category } from '../../interfaces/slot.interface';
+import { SlotsStore } from '../../store';
 
 @Component({
   selector: 'app-category-filters',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgClass],
   templateUrl: './category-filters.component.html',
-  styleUrls: ['./category-filters.component.css'],
+  styleUrls: ['./category-filters.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('expandCollapse', [
@@ -56,21 +55,17 @@ import { Category } from '../../interfaces/slot.interface';
     ]),
   ],
 })
-export class CategoryFiltersComponent implements OnInit {
-  data$: Observable<Category[]> | undefined;
-  selectedButton: any;
-  collapseText: string = 'See more';
-  seeMore: boolean = false;
-  slotsFacade = inject(SlotsFacade);
-  ngOnInit(): void {
-    this.data$ = this.slotsFacade.getSlotCategories();
-    this.selectedButton = this.slotsFacade.getData();
-  }
+
+export class CategoryFiltersComponent {
+  readonly store = inject(SlotsStore)
+
+  seeMore = signal(false);
+
   selectButton(item: Category): void {
-    this.slotsFacade.setData(item);
+    this.store.updateActiveCategory(item.category);
   }
+
   toggleButton(): void {
-    this.seeMore = !this.seeMore;
-    this.collapseText = this.seeMore ? 'See less' : 'See more';
+    this.seeMore.update((value) => !value);
   }
 }
